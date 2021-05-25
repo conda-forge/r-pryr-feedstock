@@ -7,7 +7,6 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: pryr_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/pryr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/pryr/pryr_{{ version }}.tar.gz
@@ -16,7 +15,6 @@ source:
 build:
   merge_build_host: True  # [win]
   number: 1004
-  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
@@ -51,7 +49,7 @@ test:
 
 about:
   home: https://github.com/hadley/pryr
-  license: GPL-2
+  license: GPL-2.0-only
   summary: Useful tools to pry back the covers of R and understand the language at a deeper level.
   license_family: GPL2
   license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
@@ -59,9 +57,3 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
