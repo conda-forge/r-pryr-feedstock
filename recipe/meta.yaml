@@ -1,4 +1,4 @@
-{% set version = '0.1.4' %}
+{% set version = "0.1.5" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/pryr_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/pryr/pryr_{{ version }}.tar.gz
-  sha256: d39834316504c49ecd4936cbbcaf3ee3dae6ded287af42475bf38c9e682f721b
+  sha256: 7b1653ec51850f4633cee8e2eb7d0b2724fb587b801539488b426cf88f0f770b
 
 build:
-  merge_build_host: True  # [win]
-  number: 1004
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -52,7 +52,7 @@ about:
   license: GPL-2.0-only
   summary: Useful tools to pry back the covers of R and understand the language at a deeper level.
   license_family: GPL2
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 
 extra:
   recipe-maintainers:
