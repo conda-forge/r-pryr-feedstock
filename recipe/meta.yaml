@@ -55,6 +55,7 @@ test:
     - $R -e "library('pryr')"           # [not win]
     - "\"%R%\" -e \"library('pryr')\""  # [win]
 
+
 about:
   home: https://github.com/hadley/pryr
   license: GPL-2.0-only
