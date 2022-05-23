@@ -21,6 +21,11 @@ build:
 
 requirements:
   build:
+    - cross-r-base {{ r_base }}  # [build_platform != target_platform]
+    - r-lobstr                   # [build_platform != target_platform]
+    - r-stringr                  # [build_platform != target_platform]
+    - r-codetools                # [build_platform != target_platform]
+    - r-rcpp                     # [build_platform != target_platform]
     - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ compiler('cxx') }}            # [not win]
@@ -49,6 +54,7 @@ test:
   commands:
     - $R -e "library('pryr')"           # [not win]
     - "\"%R%\" -e \"library('pryr')\""  # [win]
+
 
 about:
   home: https://github.com/hadley/pryr
