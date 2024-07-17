@@ -1,6 +1,5 @@
 {% set version = "0.1.6" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-pryr
@@ -13,8 +12,7 @@ source:
   sha256: 68c1a30a42808eb01a64d31e521d21f2fd5a88dd2c14d05b4b7986d27a177704
 
 build:
-  merge_build_host: true  # [win]
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
@@ -27,7 +25,9 @@ requirements:
     - r-codetools                # [build_platform != target_platform]
     - r-rcpp                     # [build_platform != target_platform]
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
@@ -44,7 +44,6 @@ requirements:
     - r-stringr
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.11.0
     - r-codetools
     - r-lobstr
